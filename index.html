@@ -1786,7 +1786,6 @@ function checkForMatch() {
             if(lastGameRank == 2) rankDisplay = "🥈 亞軍";
             if(lastGameRank == 3) rankDisplay = "🥉 季軍";
 
-            // 🔥 修改點：文字改為 "辛苦曬！本次得分為"
             dashboard.innerHTML = `
                 <div style="font-size: 1.1rem; color: #7f8c8d; margin-bottom: 5px;">辛苦曬！本次得分為</div>
                 <div style="font-size: 3rem; font-weight: 900; color: #e74c3c; line-height: 1.2; margin: 5px 0;">
@@ -1796,7 +1795,6 @@ function checkForMatch() {
                      本次排名: ${rankDisplay}
                 </div>
             `;
-            
             container.appendChild(dashboard);
 
             // B. 列表
@@ -1812,8 +1810,7 @@ function checkForMatch() {
 
                 record.pairs.forEach(pair => {
                     const fullGroupData = synonymData.find(g => g.id === pair.gid);
-                    if (!fullGroupData) return;
-
+                    
                     const groupBox = document.createElement('div');
                     groupBox.className = 'result-group-box';
                     groupBox.style.borderColor = pair.color;
@@ -1822,30 +1819,38 @@ function checkForMatch() {
                     meaningDiv.className = 'result-meaning';
                     meaningDiv.style.color = pair.color;
 
-                    // 🔥 修改重點：找出這組字的所有單字 (fullGroupData) 傳給 AI
-                    // 如果搵唔到 fullGroupData (防呆)，就只用 pair.words
-const allWordsInGroup = fullGroupData ? fullGroupData.words : pair.words;
+                    // 準備數據
+                    const allWordsInGroup = fullGroupData ? fullGroupData.words : pair.words;
                     const meaningText = fullGroupData ? fullGroupData.meaning : '意思';
 
-const allWordsInGroup = fullGroupData ? fullGroupData.words : pair.words;
-                    const meaningText = fullGroupData ? fullGroupData.meaning : '意思';
+                    // 🔥 安全寫法：用 JS 建立按鈕
+                    meaningDiv.innerText = meaningText + ' '; 
 
-                    meaningDiv.innerHTML = `
-                        ${meaningText}
-                        <button class="ai-btn" onclick='askGemini(this, "${meaningText}", ${JSON.stringify(allWordsInGroup)})'>
-                            ✨ 分析此組字
-                        </button>
-                    `;
-                    
+                    const aiBtn = document.createElement('button');
+                    aiBtn.className = 'ai-btn';
+                    aiBtn.innerHTML = '✨ 分析此組字';
+                    aiBtn.onclick = function() { askGemini(this, meaningText, allWordsInGroup); };
+
+                    meaningDiv.appendChild(aiBtn);
                     groupBox.appendChild(meaningDiv);
 
-                    fullGroupData.words.forEach(w => {
-                        const wText = (typeof w === 'string') ? w : w.t;
-                        if (!pair.words.includes(wText)) {
-                            const badge = createWordBadge(wText, '#95a5a6', false);
-                            wordsFlex.appendChild(badge);
-                        }
+                    const wordsFlex = document.createElement('div');
+                    wordsFlex.className = 'result-words-flex';
+
+                    pair.words.forEach(wordText => {
+                        const badge = createWordBadge(wordText, pair.color, true);
+                        wordsFlex.appendChild(badge);
                     });
+
+                    if(fullGroupData) {
+                        fullGroupData.words.forEach(w => {
+                            const wText = (typeof w === 'string') ? w : w.t;
+                            if (!pair.words.includes(wText)) {
+                                const badge = createWordBadge(wText, '#95a5a6', false);
+                                wordsFlex.appendChild(badge);
+                            }
+                        });
+                    }
 
                     groupBox.appendChild(wordsFlex);
                     container.appendChild(groupBox);
@@ -2055,7 +2060,7 @@ const allWordsInGroup = fullGroupData ? fullGroupData.words : pair.words;
         // --- 溫習表功能 ---
 // --- 溫習表功能 (已修復：顯示個別字義 + 點擊動畫 + 移除喇叭圖示) ---
         // --- 溫習表功能 (已更新：支援動態顏色光) ---
-        function openStudyModal() {
+function openStudyModal() {
             const container = document.getElementById('studyListContainer');
             container.innerHTML = '';
             
@@ -2071,19 +2076,20 @@ const allWordsInGroup = fullGroupData ? fullGroupData.words : pair.words;
                 groupDiv.className = 'study-group';
                 groupDiv.style.borderLeftColor = group.color;
 
-const meaningDiv = document.createElement('div');
+                const meaningDiv = document.createElement('div');
                 meaningDiv.className = 'study-meaning';
                 meaningDiv.style.color = group.color;
                 
-                // 🔥 修改開始：加入 AI 按鈕 🔥
-meaningDiv.innerHTML = `
-                    ${group.meaning} 
-                    <button class="ai-btn" onclick='askGemini(this, "${group.meaning}", ${JSON.stringify(group.words)})'>
-                        ✨ 問 AI 助手
-                    </button>
-                `;
-                // 🔥 修改結束 🔥
+                // 🔥 安全寫法：先放文字，再用 JS 建立按鈕，避免引號衝突
+                meaningDiv.innerText = group.meaning + ' '; // 加個空格
 
+                const aiBtn = document.createElement('button');
+                aiBtn.className = 'ai-btn';
+                aiBtn.innerHTML = '✨ 問 AI 助手';
+                // 直接綁定函數，唔洗經 HTML string
+                aiBtn.onclick = function() { askGemini(this, group.meaning, group.words); };
+                
+                meaningDiv.appendChild(aiBtn); // 將按鈕放入去
                 groupDiv.appendChild(meaningDiv);
 
                 const wordsDiv = document.createElement('div');
@@ -2092,31 +2098,18 @@ meaningDiv.innerHTML = `
                 group.words.forEach(w => {
                     const span = document.createElement('span');
                     span.className = 'study-tag';
-                    
-                    // 🔥 關鍵修改：將這組字的顏色存入 CSS 變數 (--pop-color)
                     span.style.setProperty('--pop-color', group.color);
 
-                    let textToSpeak = '';
-                    let displayHtml = '';
-
-                    if (typeof w === 'string') {
-                        textToSpeak = w;
-                        displayHtml = w;
-                    } else {
-                        textToSpeak = w.t;
-                        displayHtml = `${w.t} <small style="color:#7f8c8d; font-weight:normal; font-size: 0.85em;">(${w.m})</small>`;
-                    }
+                    let textToSpeak = (typeof w === 'string') ? w : w.t;
+                    let displayHtml = (typeof w === 'string') ? w : `${w.t} <small style="color:#7f8c8d; font-weight:normal; font-size: 0.85em;">(${w.m})</small>`;
 
                     span.innerHTML = displayHtml;
-
                     span.onclick = () => {
                         speakWord(textToSpeak);
-                        
                         span.classList.remove('pop-active');
-                        void span.offsetWidth; // 強制瀏覽器重繪 (Trigger Reflow)
+                        void span.offsetWidth;
                         span.classList.add('pop-active');
                     };
-
                     wordsDiv.appendChild(span);
                 });
 
