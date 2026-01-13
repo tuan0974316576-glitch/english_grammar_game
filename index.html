@@ -1411,11 +1411,11 @@
             secondCard = this; checkForMatch();
         }
 function checkForMatch() {
-            // 獲取兩張卡嘅單字
+            // 獲取兩張卡嘅單字 (Word)
             const w1 = firstCard.dataset.word;
             const w2 = secondCard.dataset.word;
 
-            // 檢查是否同義詞
+            // 檢查是否同義詞 (呼叫獨立的函數)
             if (isSynonymPair(w1, w2)) {
                 disableCards();
             } else {
@@ -1423,16 +1423,17 @@ function checkForMatch() {
             }
         }
 
-        // 🔍 同義詞檢查功能 (獨立函數，不再被夾在中間)
+        // 🔥 獨立出來的同義詞檢查功能 🔥
         function isSynonymPair(wordA, wordB) {
             if (!wordA || !wordB) return false;
             
             const wa = wordA.toLowerCase();
             const wb = wordB.toLowerCase();
 
+            // 如果兩隻字一模一樣
             if (wa === wb) return true;
 
-            // 查字典
+            // 查字典 logic
             for (let group of synonymData) {
                 const wordsInGroup = group.words.map(w => 
                     (typeof w === 'string' ? w : w.t).toLowerCase()
@@ -1450,11 +1451,9 @@ function checkForMatch() {
             const c2 = secondCard;
             const color = c1.dataset.color || '#333';
 
-            // 移除點擊事件
             c1.removeEventListener('click', flipCard); 
             c2.removeEventListener('click', flipCard);
 
-            // 播放配對動畫
             setTimeout(() => {
                 playSound('match'); 
                 c1.classList.add('matched'); 
@@ -1465,19 +1464,17 @@ function checkForMatch() {
                     const w = c.querySelector('.word-text');
                     const m = c.querySelector('.meaning-text');
                     
-                    // 變色樣式
                     f.setAttribute('style', `background-color:#fff!important; border:3px solid ${color}!important; color:${color}!important; transform:rotateY(180deg); box-shadow:inset 0 0 0 1px ${color}20;`);
                     w.style.color = color; 
                     if(m) m.style.cssText = `color:${color}!important; opacity:1!important; transform:translateY(0)!important; display:block!important;`;
                 });
             }, 300);
 
-            // 🔥 立即加分
+            // 🔥 這些加分代碼現在正確地屬於 disableCards 了
             matchedPairs++;
             totalScore += 10; 
             updateUI(); 
 
-            // 檢查是否贏了 (8對 = 16張卡)
             if (matchedPairs === 8) {
                 clearInterval(timer);
                 totalScore += remainingTime + (lives * 10);
@@ -1497,18 +1494,17 @@ function checkForMatch() {
             const c2 = secondCard;
             
             [c1, c2].forEach(c => {
-                let cnt = parseInt(c.dataset.failCount || 1) + 1; 
+                let cnt = parseInt(c.dataset.failCount||1)+1; 
                 c.dataset.failCount = cnt;
                 let w = c.dataset.word;
                 
-                // 提示邏輯
                 let rawHint = w.substring(0, Math.min(cnt, w.length));
                 let hint = rawHint.charAt(0).toUpperCase() + rawHint.slice(1);
 
                 let b = c.querySelector('.card-back'); 
                 if(b) {
                     b.innerText = hint;
-                    b.style.fontSize = hint.length > 3 ? '1rem' : (hint.length > 1 ? '1.5rem' : '2.5rem');
+                    b.style.fontSize = hint.length>3?'1rem':(hint.length>1?'1.5rem':'2.5rem');
                     b.style.background = "linear-gradient(135deg, #5b6ebf 0%, #683e91 100%)";
                 }
             });
@@ -1526,10 +1522,10 @@ function checkForMatch() {
                 c1.classList.add('shake'); 
                 c2.classList.add('shake'); 
             }, 400);
-
+            
             setTimeout(() => { 
-                c1.classList.remove('flipped', 'shake'); 
-                c2.classList.remove('flipped', 'shake'); 
+                c1.classList.remove('flipped','shake'); 
+                c2.classList.remove('flipped','shake'); 
                 resetBoard(); 
             }, 1200);
         }
