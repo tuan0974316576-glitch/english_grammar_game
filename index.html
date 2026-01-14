@@ -1518,12 +1518,12 @@ const prompt = `
             hasFlippedCard = false; lockBoard = false; firstCard = null; secondCard = null; matchedPairs = 0;
             
             if (!isNextLevel) { 
-                currentLevel = 1; totalScore = 0; lives = 10; 
+                currentLevel = 1; totalScore = 0; lives = 3; 
                 globalPairDeck = generateMasterDeck(); 
                 sessionHistory = []; 
             } else { 
                 currentLevel++; 
-                lives = Math.min(lives + 3, 10); 
+                lives = Math.min(lives + 1, 3); 
             }
 
             if (globalPairDeck.length < 8) globalPairDeck = globalPairDeck.concat(generateMasterDeck());
@@ -1559,7 +1559,7 @@ const prompt = `
                 card.dataset.failCount = 1;
 
                 const displayWord = item.t.charAt(0).toUpperCase() + item.t.slice(1);
-                const hintLetter = item.t.charAt(0).toUpperCase();
+                const hintLetter = item.t.substring(0, 2).toUpperCase();
                 const textClass = item.t.length > 12 ? 'word-text long-text' : 'word-text';
                 
                 card.innerHTML = `<div class="card-inner">
@@ -1649,7 +1649,7 @@ const prompt = `
                 document.getElementById('total-score').innerText = totalScore;
                 setTimeout(() => {
                     playSound('victory');
-                    alert(`🎉 Level ${currentLevel} Complete! 加番3個❤️俾你!\n總分: ${totalScore}`);
+                    alert(`🎉 Level ${currentLevel} Complete! 加番1個❤️俾你!\n總分: ${totalScore}`);
                     initGame(true);
                 }, 800);
             }
@@ -1993,7 +1993,7 @@ const prompt = `
             document.getElementById('preGameButtons').style.display = 'flex';
             document.getElementById('inGameButtons').style.display = 'none';
             document.getElementById('timer').innerText = timeLimit;
-            document.getElementById('lives').innerText = "❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️";
+            document.getElementById('lives').innerText = "❤️❤️❤️";
             lives = 10;
         }
 
