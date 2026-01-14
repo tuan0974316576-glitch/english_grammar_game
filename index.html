@@ -1816,7 +1816,7 @@ deck.forEach(item => {
         }
 
         // 3. 顯示結果頁 (新版)
-        function showResultPage(reason) {
+function showResultPage(reason) {
             closeModal('rankModal'); 
             
             const container = document.getElementById('resultListContainer');
@@ -1864,18 +1864,22 @@ deck.forEach(item => {
                     meaningDiv.className = 'result-meaning';
                     meaningDiv.style.color = pair.color;
 
+                    // 1. 準備數據
                     const allWordsInGroup = fullGroupData ? fullGroupData.words : pair.words;
                     const meaningText = fullGroupData ? fullGroupData.meaning : '意思';
 
+                    // 2. 建立中文意思的 Span (這是左邊的元素)
                     const textSpan = document.createElement('span');
                     textSpan.innerText = meaningText;
-                    meaningDiv.appendChild(textSpan); // 放 text 入去
+                    meaningDiv.appendChild(textSpan); 
 
+                    // 3. 建立 AI 按鈕 (這是右邊的元素)
                     const aiBtn = document.createElement('button');
                     aiBtn.className = 'ai-btn';
                     aiBtn.innerHTML = '✨ 分析此組字';
                     aiBtn.onclick = function() { askGemini(this, meaningText, allWordsInGroup); };
-                
+                    
+                    // 4. 將按鈕放入 meaningDiv
                     meaningDiv.appendChild(aiBtn); 
 
                     groupBox.appendChild(meaningDiv);
@@ -2123,19 +2127,21 @@ function openStudyModal() {
                 groupDiv.style.borderLeftColor = group.color;
 
                 const meaningDiv = document.createElement('div');
-                meaningDiv.className = 'study-meaning';
+                meaningDiv.className = 'study-meaning'; // 此 class 已有 space-between
                 meaningDiv.style.color = group.color;
                 
-                // 🔥 安全寫法：先放文字，再用 JS 建立按鈕，避免引號衝突
-                meaningDiv.innerText = group.meaning + ' '; // 加個空格
+                // 1. 建立左邊文字 Span
+                const textSpan = document.createElement('span');
+                textSpan.innerText = group.meaning;
+                meaningDiv.appendChild(textSpan);
 
+                // 2. 建立右邊 AI 按鈕
                 const aiBtn = document.createElement('button');
                 aiBtn.className = 'ai-btn';
                 aiBtn.innerHTML = '✨作文點用';
-                // 直接綁定函數，唔洗經 HTML string
                 aiBtn.onclick = function() { askGemini(this, group.meaning, group.words); };
                 
-                meaningDiv.appendChild(aiBtn); // 將按鈕放入去
+                meaningDiv.appendChild(aiBtn); 
                 groupDiv.appendChild(meaningDiv);
 
                 const wordsDiv = document.createElement('div');
