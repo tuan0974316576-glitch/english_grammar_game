@@ -1564,7 +1564,7 @@ const prompt = `
                 sessionHistory = []; 
             } else { 
                 currentLevel++; 
-                lives = Math.min(lives + 1, 3); 
+                lives = Math.min(lives + 1, 10); 
             }
 
             if (globalPairDeck.length < 8) globalPairDeck = globalPairDeck.concat(generateMasterDeck());
