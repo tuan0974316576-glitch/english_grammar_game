@@ -1559,7 +1559,7 @@ const prompt = `
             hasFlippedCard = false; lockBoard = false; firstCard = null; secondCard = null; matchedPairs = 0;
             
             if (!isNextLevel) { 
-                currentLevel = 1; totalScore = 0; lives = 3; 
+                currentLevel = 1; totalScore = 0; lives = 10; 
                 globalPairDeck = generateMasterDeck(); 
                 sessionHistory = []; 
             } else { 
@@ -2042,7 +2042,7 @@ deck.forEach(item => {
             document.getElementById('preGameButtons').style.display = 'flex';
             document.getElementById('inGameButtons').style.display = 'none';
             document.getElementById('timer').innerText = timeLimit;
-            document.getElementById('lives').innerText = "❤️❤️❤️";
+            document.getElementById('lives').innerText = "❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️";
             lives = 10;
         }
 
