@@ -104,10 +104,15 @@
             overflow: hidden;
         }
 
-        .result-meaning {
-            font-weight: 900; font-size: 1.1rem; margin-bottom: 8px;
-            display: flex; align-items: center; gap: 10px;
-        }
+.result-meaning {
+    font-weight: 900; 
+    font-size: 1.1rem; 
+    margin-bottom: 8px;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%;
+}
 
         .result-words-flex {
             display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline;
@@ -1821,19 +1826,20 @@ deck.forEach(item => {
                     meaningDiv.className = 'result-meaning';
                     meaningDiv.style.color = pair.color;
 
-                    // 準備數據
                     const allWordsInGroup = fullGroupData ? fullGroupData.words : pair.words;
                     const meaningText = fullGroupData ? fullGroupData.meaning : '意思';
 
-                    // 🔥 安全寫法：用 JS 建立按鈕
-                    meaningDiv.innerText = meaningText + ' '; 
+                    const textSpan = document.createElement('span');
+                    textSpan.innerText = meaningText;
+                    meaningDiv.appendChild(textSpan); // 放 text 入去
 
                     const aiBtn = document.createElement('button');
                     aiBtn.className = 'ai-btn';
                     aiBtn.innerHTML = '✨ 分析此組字';
                     aiBtn.onclick = function() { askGemini(this, meaningText, allWordsInGroup); };
+                
+                    meaningDiv.appendChild(aiBtn); 
 
-                    meaningDiv.appendChild(aiBtn);
                     groupBox.appendChild(meaningDiv);
 
                     const wordsFlex = document.createElement('div');
