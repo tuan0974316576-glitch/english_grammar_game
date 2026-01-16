@@ -821,7 +821,7 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
             { id: 'foster', color: 'green', meaning: '促進', words: [{ t: 'Foster', m: '促進' }, { t: 'Facilitate', m: '促進' }, { t: 'Promote', m: '促進' }] },
             { id: 'decrease', color: 'olive', meaning: '減少', words: [{ t: 'Decrease', m: '減少' }, { t: 'Dwindle', m: '減少' }, { t: 'Plunge', m: '急跌' }, { t: 'Slump', m: '急跌' }, { t: 'Sink', m: '急跌' }, { t: 'Decline', m: '下降' },{ t: 'Plummet', m: '急跌' }, { t: 'Reduce ', m: '減少(+n)' }, { t: 'Lower ', m: '減少(+n)' }, { t: 'minimise ', m: '減少(+n)' }] },
             { id: 'staggering', color: 'yellow', meaning: '大(數字)', words: [{ t: 'Staggering', m: '大(數字)' }, { t: 'Whopping', m: '大(數字)' }] },
-            { id: 'important', color: 'blue', meaning: '重要', words: [{ t: 'Crucial', m: '極重要' }, { t: 'Significant', m: '重要' }, { t: 'Vital', m: '必不可少' }, { t: 'Indispensable', m: '不可或缺' }, { t: 'Key', m: '關鍵性的' }, { t: 'Critical', m: '關鍵性的' }] },
+            { id: 'important', color: 'blue', meaning: '重要', words: [{ t: 'Crucial', m: '極重要' }, { t: 'Significant', m: '重要/顯著' }, { t: 'Vital', m: '必不可少' }, { t: 'Indispensable', m: '不可或缺' }, { t: 'Key', m: '關鍵性的' }, { t: 'Critical', m: '關鍵性的' }] },
             { id: 'Cultivate', color: 'lime', meaning: '培育', words: [{ t: 'Cultivate', m: '培養' }, { t: 'Nurture', m: '孕育' }] },
             { id: 'instead of', color: 'purple', meaning: '而不是', words: ['Instead of', 'Rather than', 'As opposed to'] }, // 
             { id: 'suffer from', color: 'fuchsia', meaning: '患上', words: ['Suffer from', 'Develop', 'Afflicted with'] }, 
@@ -851,7 +851,7 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
             },
             { 
                 id: 'exponential', color: '#d35400', meaning: '巨大的 / 急劇的', 
-                words: ['Exponential', 'Drastic', 'Significant', 'Tremendous'] 
+                words: ['Exponential', 'Drastic', 'Tremendous'] 
             },
             { 
                 id: 'pressing', color: '#c0392b', meaning: '迫在眉睫', 
@@ -1149,7 +1149,6 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
                 color: '#c0392b', // Dark Red
                 meaning: '大幅度 / 顯著', 
                 words: [
-                    { t: 'Significant', m: '顯著' },
                     { t: 'Substantial', m: '可觀的' },
                     { t: 'Drastic', m: '激烈的' },
                     { t: 'Radical', m: '徹底的' }
