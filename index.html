@@ -843,7 +843,7 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
             },
             { 
                 id: 'harness', color: '#2980b9', meaning: '駕馭 / 控制', 
-                words: ['Harness', 'Manipulate', 'Control', 'Utilize'] 
+                words: ['Harness', 'Manipulate', 'Control'] 
             },
             { 
                 id: 'spur', color: '#27ae60', meaning: '刺激 / 激勵', 
@@ -907,13 +907,56 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
                 id: 'limit', color: '#c0392b', meaning: '限制', 
                 words: ['Limit', 'Constrain', 'Restrict', 'Confine'] 
             },
+ id: 'indeed', color: '#ffb703', meaning: '的確', 
+                words: ['Indeed', 'Admittedly', 'Granted'] 
+            },
+     id: 'a handful of', color: '#fb8500', meaning: '一小撮', 
+                words: [
+                    {t:'A handful of', m:'一小撮'},
+                    {t:'A fraction of', m:'一小部份'}
+                ] 
+            },
+                { 
+                id: 'utilise', color: '#cdb4db', meaning: '善用', 
+                words: [
+                    {t:'utilise', m:'善用'},
+                    {t:'make wise use of', m:'善用'}
+                ] 
+            },
+ { 
+                id: 'tap into', color: '#5f0f40', meaning: '利用', 
+                words: [
+                    {t:'tap into', m:'利用'},
+                    {t:'take advantage of', m:'利用(可負面)'}, 
+                    {t:'capitalise on', m:'利用'},
+                    {t:'make use of', m:'利用'}
+                ] 
+            },
             { 
                 id: 'change', color: '#f39c12', meaning: '改變 (程度)', 
                 words: [
-                    {t:'Chane', m:'改變'},
+                    {t:'Change', m:'改變'},
                     {t:'Transform', m:'改變(大)'}, 
                     {t:'Alter', m:'改變(小)'}, 
                     {t:'Shift', m:'轉變/轉移'}
+                ] 
+            },
+{ 
+                id: 'dreary', color: '99582a', meaning: '悶', 
+                words: [
+                    {t:'Dreary', m:'無趣'}, 
+                    {t:'Routine', m:'一成不變'}, 
+                    {t:'Monotonous', m:'單調'}, 
+                    {t:'Dull', m:'枯燥'}
+                ] 
+            },
+            { 
+                id: 'nostalgic', color: '264653', meaning: '懷舊', 
+                words: [
+                    {t:'Nostalgic', m:'懷舊的'}, 
+                    {t:'Antique', m:'古典美的'}, 
+                    {t:'Retro', m:'復古的(感覺)'}, 
+                    {t:'Vintage', m:'復古的(高質)'}
                 ] 
             },
             { 
@@ -936,7 +979,7 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
                 words: ['Implication', 'Suggestion', 'Insinuation', 'Consequence'] 
             },
             { 
-                id: 'prosper', color: '#c40ff1', meaning: '致命的', 
+                id: 'lethal', color: '#c40ff1', meaning: '致命的', 
                 words: ['Lethal', 'Fatal', 'Deadly'] 
             },
                         { 
@@ -944,12 +987,28 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
                 words: ['Thrive', 'Flourish', 'Prosper'] 
             },
             { 
-                id: 'boom', color: '#f1c40f', meaning: '快速發展', 
+                id: 'Boom', color: '#f1c40f', meaning: '快速發展', 
                 words: ['Boom', 'Burgeon'] 
             },
                     { 
-                id: 'act as', color: '#b1c40f', meaning: '作為', 
+                id: 'Act as', color: '#b1c40f', meaning: '作為', 
                 words: ['Act as', 'Serve as'] 
+            },
+                                { 
+                id: 'Market', color: '#219ebc', meaning: '推廣', 
+                words: ['Market', 'Promote', 'Advertise'] 
+            },
+                                            { 
+                id: 'Genuine', color: '#003049', meaning: '真正', 
+                words: ['Genuine', 'Authentic'] 
+            },
+                                                        { 
+                id: 'Colleague', color: '#344e41', meaning: '同事', 
+                words: ['Colleague', 'Co-worker', 'Workmate'] 
+            },
+                                                        { 
+                id: 'Vice', color: '#780000', meaning: '副', 
+                words: ['Vice', 'Deputy', 'Associate'] 
             },
                                 { 
                 id: 'firm', color: '#0f74f1', meaning: '公司/機構', 
@@ -964,18 +1023,46 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
                     {t:'Institution', m:'機構'},
                 ] 
             },
+                                    {
+id: 'Comprise', color: '#dda15e', meaning: '由...構成', 
+                words: [
+                    {t:'Compose of', m:'由...構成'}, 
+                    {t:'Comprise', m:'由...構成'}, 
+                    {t:'Consist of', m:'由...構成'}, 
+                    {t:'Made up of', m:'由...構成'}
+                ] 
+            },
                                { 
-                id: 'as if', color: '#0fe5f1', meaning: '彷彿', 
-                words: ['as if', 'as though'] 
+                id: 'As if', color: '#0fe5f1', meaning: '彷彿', 
+                words: ['As if', 'As though'] 
+            },
+                                   { 
+                id: 'Distinguish', color: '#283618', meaning: '分辨', 
+                words: ['Distinguish', 'Identify'] 
             },
             { 
                 id: 'alternative', color: '#16a085', meaning: '另一選擇', 
                 words: ['Alternative', 'Substitute'] 
             },
             { 
-                id: 'beyond', color: '#8e44ad', meaning: '不單只 / 超越', 
+                id: 'beyond', color: '#8e44ad', meaning: '不單只', 
                 words: ['Beyond', 'More than', 'Other than', 'On top of'] 
             },
+                                    {
+id: 'Apathetic', color: '#773f0d', meaning: '對...冷漠', 
+words: ['Apathetic to','Indifferent to'] 
+            },
+                                    {
+    id: 'Essentially', color: '#bc6c25', meaning: '本質上', 
+words: ['Essentially','In essence','In nature'] 
+            },
+                                    {
+id: 'Bias', color: '#228ae6', meaning: '偏見', 
+words: [
+                    {t:'Bias', m:'偏見'}, 
+                    {t:'Prejudice', m:'成見'}
+                ] 
+                },
             { 
                 id: 'emerge', color: '#e67e22', meaning: '出現', 
                 words: [
@@ -983,6 +1070,14 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
                     {t:'Appear', m:'出現'}, 
                     {t:'Arise', m:'出現'}, 
                     {t:'Surface', m:'浮現'}
+                ] 
+            },
+id: 'Ignore', color: '#e77e23', meaning: '出現', 
+                words: [
+                    {t:'Ignore', m:'忽視'}, 
+                    {t:'Neglect', m:'忽視'}, 
+                    {t:'Turn a blind a eye to', m:'視而不見'}, 
+                    {t:'Overlook', m:'忽略'}
                 ] 
             },
             { 
@@ -1005,15 +1100,88 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
             },
             { 
                 id: 'approx', color: '#bdc3c7', meaning: '大約 / 幾乎', 
-                words: ['Roughly', 'Approximately', 'virtually','Almost', 'Around'] 
+                words: ['Roughly', 'Approximately', 'Virtually','Almost', 'Around'] 
+            },
+    {
+                    id: 'sceptical', color: '#ff006e', meaning: '懷疑', 
+                words: ['Sceptical about', 'Doubtful about', 'Cast doubt on', 'doubt'] 
+            },
+    {
+                  id: 'opposed', color: '#8338ec', meaning: '反對', 
+                words: ['Opposed to', 'Averse to', 'Against'] 
+            },
+    {
+                        id: 'tend to', color: '#e36414', meaning: '傾向', 
+                words: [                    
+                    {t:'Tend to', m:'傾向/往往'}, 
+                    {t:'Inclined to', m:'傾向(立場)'}
+                ] 
+            },
+        {
+                        id: 'harmful', color: '#9a031e', meaning: '有害', 
+                words: [                    
+                    {t:'Harmful to', m:'對...有害'}, 
+                     {t:'Injurious to', m:'對...有害'},
+                    {t:'Deleterious to', m:'對...有害'},
+                    {t:'Deleterious to', m:'對...有害'},
+                    {t:'Unwholesome to', m:'對...有害(健康)'}
+                ] 
+            },
+            {
+id: 'novel', color: '#003459', meaning: '創新', 
+                words: [                    
+                    {t:'Novel', m:'新穎'}, 
+                     {t:'Innovative', m:'創新'},
+                    {t:'State-of-the-art', m:'尖端'},
+                 {t:'Revolutionary', m:'革命性的'},
+                    {t:'Advanced', m:'先進的'},
+                    {t:'Cutting-edge', m:'劃時代'}
+                ] 
+            },
+    {
+id: 'appreciate', color: '#43aa8b', meaning: '欣賞', 
+                words: [                    
+                    {t:'Appreciate', m:'欣賞'}, 
+                     {t:'Praise', m:'讚賞'},
+                    {t:'Compliment', m:'讚美'},
+                 {t:'Admire', m:'敬佩'}
+                ] 
             },
             { 
                 id: 'mitigate', color: '#3498db', meaning: '舒緩 / 減輕', 
                 words: ['Mitigate', 'Relieve', 'Alleviate', 'Ease', 'Allay'] 
             },
+                { 
+                id: 'eventually', color: '#00a8e8', meaning: '最終', 
+                words: ['Eventually', 'Ultimately', 'End up'] 
+            },
+                     { 
+                id: 'exhuasted', color: '#277da1', meaning: '疲倦', 
+                words: ['Exhausted', 'Drained', 'Fatigued', 'Weary'] 
+            },               
+    { 
+                id: 'nascent', color: '#f94144', meaning: '嶄新的', 
+                words: ['Nascent', 'Budding']
+            },
+        { 
+                id: 'tempt', color: '#f8961e', meaning: '引誘', 
+                words: ['tempt', 'entice', 'lure']
+            },
             { 
                 id: 'achieve', color: '#f39c12', meaning: '達成', 
                 words: ['Achieve', 'Attain', 'Accomplish'] 
+            },
+                { 
+                id: 'satisfied', color: '#ff477e', meaning: '對...滿意', 
+                words: ['Content with', 'Satisfied with'] 
+            },
+                { 
+                id: 'dedicate to', color: '#ef233c', meaning: '致力於', 
+                words: [
+                    {t:'Dedicate to', m:'致力於(v)'}, 
+                    {t:'Devote to', m:'致力於(v)'}, 
+                    {t:'Committed to', m:'致力於(adj)'}
+                ] 
             },
             { 
                 id: 'accusation', color: '#e74c3c', meaning: '指控 / 起訴', 
@@ -1021,6 +1189,22 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
                     {t:'Accusation', m:'指控'}, 
                     {t:'Prosecution', m:'檢控'}, 
                     {t:'Charge', m:'起訴'}
+                ] 
+            },
+                { 
+                id: 'while', color: '#284b63', meaning: '雖然', 
+                words: [
+                    {t:'While', m:'雖然(+句子)'}, 
+                    {t:'Despite', m:'雖然(+名詞)'}, 
+                    {t:'Albeit', m:'雖然(+非句子、少用)'}
+                ] 
+            },
+               { 
+                id: 'legacy', color: '#ce4257', meaning: '遺產', 
+                words: [
+                    {t:'Legacy', m:'遺產'}, 
+                    {t:'Heritage', m:'遺產(文化)'}, 
+                    {t:'Relic', m:'遺物'}
                 ] 
             },
                         { 
@@ -1141,6 +1325,28 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
                     { t: 'Anticipate', m: '預料' },
                     { t: 'Project', m: '推算' },
                     { t: 'Foresee', m: '預見' }
+                ] 
+            },
+                { 
+                id: 'value', 
+                color: '#e9c46a',
+                meaning: '重視/強調', 
+                words: [
+                    { t: 'Value', m: '重視' },
+                    { t: 'Emphasise', m: '強調' },
+                    { t: 'Place emphasis on', m: '重視' },
+                    { t: 'Attach importance to', m: '推算' }
+                ] 
+            },
+                    { 
+                id: 'wander', 
+                color: '#778da9',
+                meaning: '遊走', 
+                words: [
+                    { t: 'Wander', m: '遊走' },
+                    { t: 'Roam', m: '漫遊' },
+                    { t: 'Stroll', m: '散步' },
+                    { t: 'Linger', m: '徘徊' }
                 ] 
             },
             // --- Group 9: 大幅度 ---
