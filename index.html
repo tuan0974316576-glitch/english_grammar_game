@@ -827,7 +827,7 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
             { id: 'suffer from', color: 'fuchsia', meaning: '患上', words: ['Suffer from', 'Develop', 'Afflicted with'] }, 
             { id: 'enormous', color: 'navy', meaning: '巨大的', words: ['Enormous', 'Immense', 'Massive', 'Tremendous'] },
             { id: 'situation', color: 'teal', meaning: '情況', words: ['Situation', 'Condition', 'Circumstances', 'Scenario'] },
-            { id: 'Amend', color: 'coral', meaning: '相似', words: [{ t: 'Amend', m: '修改(文件)' }, { t: 'Modify', m: '調整' }, { t: 'Adjust ', m: '調節' }, { t: 'Tune', m: '微調(工具)' }] },
+            { id: 'Amend', color: 'coral', meaning: '修改', words: [{ t: 'Amend', m: '修改(文件)' }, { t: 'Modify', m: '調整' }, { t: 'Adjust ', m: '調節' }, { t: 'Tune', m: '微調(工具)' }] },
             { id: 'tackle', color: 'cornflowerblue', meaning: '應該/處理', words: ['Handle', 'Tackle', 'Deal with', 'Cope with', 'Address'] },
             { id: 'unprecedented', color: '#e67e22', meaning: '前所未有', words: ['More than ever', 'Unprecedented'] },
             { id: 'proliferate', color: 'aquamarine', meaning: '激增',words: [{ t: 'Soar', m: '急升' }, { t: 'Skyrocket', m: '飛漲' }, { t: 'Proliferate', m: '激增' }, { t: 'Mushroom', m: '大量增加' }, { t: 'spring up', m: '湧現' }, { t: 'sprout', m: '湧現(強調新出現)' }, { t: 'Shoot up', m: '急速增加' }] },
@@ -847,7 +847,7 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
             },
             { 
                 id: 'spur', color: '#27ae60', meaning: '刺激 / 激勵', 
-                words: ['Spur', 'Stimulate', 'Prompt', 'Propel'] 
+                words: ['Spur', 'Stimulate', 'Propel'] 
             },
             { 
                 id: 'exponential', color: '#d35400', meaning: '巨大的 / 急劇的', 
@@ -942,7 +942,7 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
                 ] 
             },
 { 
-                id: 'dreary', color: '99582a', meaning: '悶', 
+                id: 'dreary', color: '#99582a', meaning: '悶', 
                 words: [
                     {t:'Dreary', m:'無趣'}, 
                     {t:'Routine', m:'一成不變'}, 
@@ -951,7 +951,7 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
                 ] 
             },
             { 
-                id: 'nostalgic', color: '264653', meaning: '懷舊', 
+                id: 'nostalgic', color: '#264653', meaning: '懷舊', 
                 words: [
                     {t:'Nostalgic', m:'懷舊的'}, 
                     {t:'Antique', m:'古典美的'}, 
@@ -1072,7 +1072,7 @@ words: [
                     {t:'Surface', m:'浮現'}
                 ] 
             },
-            {id: 'Ignore', color: '#e77e23', meaning: '出現', 
+            {id: 'Ignore', color: '#e77e23', meaning: '忽視', 
                 words: [
                     {t:'Ignore', m:'忽視'}, 
                     {t:'Neglect', m:'忽視'}, 
@@ -1286,13 +1286,6 @@ id: 'appreciate', color: '#43aa8b', meaning: '欣賞',
                     { t: 'Enthusiast', m: '發燒友' },
                     { t: 'Fanatic', m: '狂熱者' }
                 ] 
-            },
-            // --- Group 4: 大約 ---
-            { 
-                id: 'approx', 
-                color: '#95a5a6', // Gray
-                meaning: '大約', 
-                words: ['Approximately', 'Roughly', 'Around', 'About'] 
             },
 
             // --- Group 6: 足夠 (基本) ---
@@ -1524,15 +1517,12 @@ id: 'appreciate', color: '#43aa8b', meaning: '欣賞',
             },
             // --- Group 23: 驅使/促進 ---
             { 
-                id: 'foster', 
+                id: 'drive', 
                 color: '#27ae60', // Nephritis
-                meaning: '促進 / 驅使', 
+                meaning: '驅使', 
                 words: [
                     { t: 'Drive', m: '驅使' },
-                    { t: 'Prompt', m: '促使' },
-                    { t: 'Foster', m: '培養/促進' },
-                    { t: 'Facilitate', m: '促進/使便利' },
-                    { t: 'Promote', m: '推廣/促進' }
+                    { t: 'Prompt', m: '促使' }
                 ] 
             },
             // --- Group 24: 香味/氣味 ---
