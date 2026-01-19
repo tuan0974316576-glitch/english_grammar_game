@@ -820,8 +820,8 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
             { id: 'be that as it may', color: 'burlywood', meaning: '話雖如此', words: ['Be that as it may', 'That said', 'Having said that', 'With that said'] },
             { id: 'especially', color: 'burlywood', meaning: '尤其是', words: ['Especially', 'Particularly', 'In particular'] },
             { id: 'specific', color: 'coral', meaning: '特定', words: ['Specific', 'Particular'] },
-            { id: 'benefit', color: 'cadetblue', meaning: '好處', words: [{ t: 'Benefit', m: '益處' }, { t: 'Merit', m: '優點' }, { t: 'Pros', m: '利(必須眾數)' }, { t: 'Advantage', m: '優點' }] },
-            { id: 'drawback', color: 'chocolate', meaning: '壞處', words: [{ t: 'Drawback', m: '弊處' }, { t: 'Demerit', m: '缺點' }, { t: 'Cons', m: '弊(必須眾數)' }, { t: 'Disadvantage', m: '缺點' }] },
+            { id: 'benefit', color: 'cadetblue', meaning: '好處', words: [{ t: 'Benefit', m: '益處' }, { t: 'Merit', m: '優點' }, { t: 'Pros', m: '利(必須眾數)' }, { t: 'Upside', m: '好處(不可加s)' }, { t: 'Advantage', m: '優點' }] },
+            { id: 'drawback', color: 'chocolate', meaning: '壞處', words: [{ t: 'Drawback', m: '弊處' }, { t: 'Demerit', m: '缺點' }, { t: 'Cons', m: '弊(必須眾數)' }, { t: 'Downside', m: '壞處(不可加s)' },{ t: 'Disadvantage', m: '缺點' }] },
             { id: 'foster', color: 'green', meaning: '促進', words: [{ t: 'Foster', m: '促進' }, { t: 'Facilitate', m: '促進' }, { t: 'Promote', m: '促進' }] },
             { id: 'decrease', color: 'olive', meaning: '減少', words: [{ t: 'Decrease', m: '減少' }, { t: 'Dwindle', m: '減少' }, { t: 'Plunge', m: '急跌' }, { t: 'Slump', m: '急跌' }, { t: 'Sink', m: '急跌' }, { t: 'Decline', m: '下降' },{ t: 'Plummet', m: '急跌' }, { t: 'Reduce ', m: '減少(+n)' }, { t: 'Lower ', m: '減少(+n)' }, { t: 'minimise ', m: '減少(+n)' }] },
             { id: 'staggering', color: '#FFC72C', meaning: '大(數字)', words: [{ t: 'Staggering', m: '大(數字)' }, { t: 'Whopping', m: '大(數字)' }] },
@@ -837,8 +837,15 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
             { id: 'proliferate', color: 'aquamarine', meaning: '激增',words: [{ t: 'Soar', m: '急升' }, { t: 'Skyrocket', m: '飛漲' }, { t: 'Proliferate', m: '激增' }, { t: 'Mushroom', m: '大量增加' }, { t: 'spring up', m: '湧現' }, { t: 'sprout', m: '湧現(強調新出現)' }, { t: 'Shoot up', m: '急速增加' }] },
 
             { id: 'Deteriorate', color: 'darkblue', meaning: '惡化', words: [{ t: 'Deteriorate', m: '惡化(不+n)' }, { t: 'Aggravate', m: '惡化(+n)' }, { t: 'Exacerbate', m: '惡化(+n)' }, { t: 'Worsen ', m: '惡化(+n/不+n)' }] },
-{ 
-                id: 'extraordinary', color: '#e74c3c', meaning: '出眾 / 傑出', 
+            { 
+                id: 'outrageous', color: '#e74c3c', meaning: '荒謬的', 
+                words: [{ t: 'Outrageous', m: '荒謬的' }, { t: 'Absurd', m: '荒謬的' }, { t: 'Ridiculous', m: '荒謬到可笑的' }] },
+                        { 
+                id: 'inevitable', color: '#a53860', meaning: '出眾 / 傑出', 
+                words: ['Inevitable','Unavoidable'] 
+            },
+            { 
+                id: 'extraordinary', color: '#da627d', meaning: '出眾 / 傑出', 
                 words: ['Extraordinary', 'Exceptional', 'Outstanding', 'Remarkable'] 
             },
             { 
@@ -970,6 +977,48 @@ aiText = aiText.replace(/### (.*?)\n/g, '<h4>$1</h4>');
                     {t:'Beef up', m:'增強(口語)'}
                 ] 
             },
+            {
+               id: 'unable to', color: '#ff006e', meaning: '未能', 
+                words: [
+                    {t:'Unable to', m:'未能(adj, )'}, 
+                    {t:'Fail to', m:'未能(v)'}, 
+                    {t:'Incapable of', m:'未能(整體能力)'}
+                ] 
+            },     
+                        { 
+                id: 'unwilling to', color: '#7400b8', meaning: '不願意', 
+                words: [
+                    {t:'Unwilling to', m:'不願意'}, 
+                    {t:'Reluctant to', m:'不情願'}
+                ] 
+            },
+            { 
+                id: 'live in poverty', color: '#ff6b35', meaning: '活得貧窮', 
+                words: [
+                    {t:'Live in poverty', m:'貧窮地生活'}, 
+                    {t:'Live paycheck to paycheck', m:'捉襟見肘地生活'}
+                ] 
+            },
+                                                { 
+                id: 'make a living', color: '#118ab2', meaning: '維持生計', 
+                words: ['Make a living', 'Earn a livelihood', 'Make ends meet'] 
+            },
+                                    { 
+                id: 'concerning', color: '#31572c', meaning: '就...而言', 
+                words: ['In terms of', 'Concerning', 'Regarding', 'As for', 'With regard to'] 
+            },
+                        { 
+                id: 'respect', color: '#14213d', meaning: '尊重', 
+                words: ['Respect', 'Hold in high regard'] 
+            },
+                { 
+                id: 'emblematic of', color: '#708d81', meaning: '象徵(adj)', 
+                words: ['Emblematic of', 'Symbolic of'] 
+            },
+            { 
+                id: 'occupy', color: '#fca311', meaning: '佔用', 
+                words: ['Occupy', 'Take up'] 
+            },
             { 
                 id: 'meanwhile', color: '#7f8c8d', meaning: '與此同時', 
                 words: ['Meanwhile', 'In the meantime', 'At the same time'] 
@@ -1052,6 +1101,19 @@ id: 'Comprise', color: '#dda15e', meaning: '由...構成',
 id: 'Apathetic', color: '#773f0d', meaning: '對...冷漠', 
 words: ['Apathetic to','Indifferent to'] 
             },
+                                            {
+    id: 'original', color: '#3d405b', meaning: '起初', 
+words: [
+                    {t:'Original', m:'原本'}, 
+                    {t:'Indigenous', m:'原住民的'}, 
+                    {t:'Native to', m:'原產於'}, 
+                    {t:'Initial', m:'起初'}
+                ] 
+                },
+                                        {
+    id: 'overcome', color: '#640d14', meaning: '克服', 
+words: ['Overcome','Get over','Surmount'] 
+            },
                                     {
     id: 'Essentially', color: '#bc6c25', meaning: '本質上', 
 words: ['Essentially','In essence','In nature'] 
@@ -1091,12 +1153,39 @@ words: [
                 ] 
             },
             { 
+                id: 'picturesque', color: '#008000', meaning: '美麗的', 
+                words: [
+                    {t:'Picturesque', m:'如詩如畫的(風景)'}, 
+                    {t:'Spectacular', m:'壯觀的'}, 
+                    {t:'Magnificent', m:'宏偉的(建築)'},
+                    {t:'Instagrammable', m:'適合打卡的'},
+                    {t:'Photogenic', m:'很上鏡的'},
+                ] 
+            },
+                        { 
+                id: 'cherished', color: '#ffd23f', meaning: '珍惜的', 
+                words: [
+                    {t:'Cherished', m:'珍惜的'}, 
+                    {t:'Treasurable', m:'寶貴的'}, 
+                    {t:'Precious', m:'珍貴的'},
+                    {t:'Once-in-a-lifetime', m:'千載難逢的'}
+                ] 
+            },
+            { 
                 id: 'essential', color: '#2ecc71', meaning: '必要 / 強制', 
                 words: [
                     {t:'Essential', m:'必要'}, 
                     {t:'Necessary', m:'必要'}, 
                     {t:'Compulsory', m:'強制'}
                 ] 
+            },
+            { 
+                id: 'highlight', color: '#004e89', meaning: '突顯', 
+                words: ['Highlight', 'Underscore'] 
+            },
+                        { 
+                id: 'incentive', color: '#efcb5e', meaning: '動機', 
+                words: ['Incentive', 'Motivation'] 
             },
             { 
                 id: 'approx', color: '#bdc3c7', meaning: '大約 / 幾乎', 
@@ -1363,7 +1452,25 @@ id: 'appreciate', color: '#43aa8b', meaning: '欣賞',
                     { t: 'On the contrary', m: '相反' }
                 ] 
             },
-
+                      { 
+                id: 'describe', 
+                color: '#f08080', 
+                meaning: '形容', 
+                words: [
+                    { t: 'Describe', m: '形容' },
+                    { t: 'Portray', m: '描繪' },
+                    { t: 'Depict', m: '描繪' }
+                ] 
+            },
+          { 
+                id: 'ethical', 
+                color: '#00a896', 
+                meaning: '相反(否定)', 
+                words: [
+                    { t: 'Ethical', m: '倫理的' },
+                    { t: 'Moral', m: '道德的' }
+                ] 
+            },
           { 
                 id: 'instead', 
                 color: 'red', 
@@ -2329,7 +2436,7 @@ function showResultPage(reason) {
             listBody.innerHTML = '';
 
             // 獲取最後 100 筆數據
-            db.ref(LEADERBOARD_PATH).orderByChild('score').limitToLast(100).once('value')
+            db.ref(LEADERBOARD_PATH).orderByChild('score').limitToLast(1000).once('value')
             .then(snapshot => {
                 loading.style.display = 'none';
                 
@@ -2347,6 +2454,7 @@ function showResultPage(reason) {
                 // 排序
                 let uniqueScores = Object.values(uniqueMap).sort((a, b) => b.score - a.score);
 
+uniqueScores = uniqueScores.slice(0, 100);
                 if(uniqueScores.length === 0) {
                     listBody.innerHTML = '<tr><td colspan="3" style="text-align:center;">暫無紀錄</td></tr>';
                     return;
